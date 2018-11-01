@@ -1,28 +1,34 @@
-import React, { Component } from "react";
+import React from "react";
 
-class GenreSort extends Component {
-  // state = {};
-  render() {
-    return (
-      <div class="list-group">
-        <button
-          type="button"
-          class="list-group-item list-group-item-action active"
+const GenreSort = props => {
+  const {
+    items,
+    textProperty,
+    valueProperty,
+    selectedItem,
+    onItemSelect
+  } = props;
+
+  return (
+    <ul className="list-group clickable">
+      {items.map(item => (
+        <li
+          onClick={() => onItemSelect(item)}
+          key={item[valueProperty]}
+          className={
+            item === selectedItem ? "list-group-item active" : "list-group-item"
+          }
         >
-          Action
-        </button>
-        <button type="button" class="list-group-item list-group-item-action">
-          Thriller
-        </button>
-        <button type="button" class="list-group-item list-group-item-action">
-          Comedy
-        </button>
-        <button type="button" class="list-group-item list-group-item-action">
-          Documentary
-        </button>
-      </div>
-    );
-  }
-}
+          {item[textProperty]}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+GenreSort.defaultProps = {
+  textProperty: "name",
+  valueProperty: "_id"
+};
 
 export default GenreSort;
