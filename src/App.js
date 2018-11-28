@@ -20,12 +20,17 @@ class App extends Component {
           <Switch>
             <Route path="/login" component={LoginForm} />
             <Route path="/register" component={Register} />
-            <Route path="/movies/movieForm" component={MovieForm} />
+            <Route path="/movies/:id" component={MovieForm} />
             <Route path="/movies" component={Movies} />
             <Route path="/customers" component={Customers} />
             <Route path="/rentals" component={Rentals} />
             <Route path="/not-found" component={NotFound} />
-            <Redirect from="/movies" exact to="/new" component={AddMovie} />
+            <Redirect
+              from="/movies"
+              exact
+              to="movies/new"
+              component={AddMovie}
+            />
             <Redirect from="/" exact to="/movies" />
             <Redirect to="/not-found" />
           </Switch>
