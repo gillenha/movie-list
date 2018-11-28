@@ -5,6 +5,7 @@ import MoviesTable from "./moviesTable";
 import { getMovies } from "../services/fakeMovieService.js";
 import { getGenres } from "../services/fakeGenreService.js";
 import { paginate } from "../utils/paginate";
+import { Link } from "react-router-dom";
 import _ from "lodash";
 
 class Movies extends Component {
@@ -75,29 +76,34 @@ class Movies extends Component {
     if (count === 0) return <p>There are no movies in the database!</p>;
 
     return (
-      <div className="row">
-        <div className="col-3">
-          <GenreSort
-            items={this.state.genres}
-            onItemSelect={this.handleGenreSelect}
-            selectedItem={this.state.selectedGenre}
-          />
-        </div>
-        <div className="col">
-          <p>Showing {totalCount} movies in the database</p>
-          <MoviesTable
-            movies={data}
-            sortColumn={sortColumn}
-            onLike={this.handleLike}
-            onDelete={this.handleDelete}
-            onSort={this.handleSort}
-          />
-          <Pagination
-            itemsCount={totalCount}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            onPageChange={this.handlePageChange}
-          />
+      <div>
+        <div className="row">
+          <div className="col-3">
+            <GenreSort
+              items={this.state.genres}
+              onItemSelect={this.handleGenreSelect}
+              selectedItem={this.state.selectedGenre}
+            />
+            <Link to="/movies/new">
+              <button className="btn btn-primary m-2">Add Movie</button>
+            </Link>
+          </div>
+          <div className="col">
+            <p>Showing {totalCount} movies in the database</p>
+            <MoviesTable
+              movies={data}
+              sortColumn={sortColumn}
+              onLike={this.handleLike}
+              onDelete={this.handleDelete}
+              onSort={this.handleSort}
+            />
+            <Pagination
+              itemsCount={totalCount}
+              pageSize={pageSize}
+              currentPage={currentPage}
+              onPageChange={this.handlePageChange}
+            />
+          </div>
         </div>
       </div>
     );
