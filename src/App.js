@@ -6,7 +6,6 @@ import Register from "./components/register";
 import Movies from "./components/movies";
 import Customers from "./components/customers";
 import Rentals from "./components/rentals";
-import MovieForm from "./components/movieForm";
 import AddMovie from "./components/addMovie";
 import NotFound from "./components/notFound";
 import "./App.css";
@@ -20,13 +19,11 @@ class App extends Component {
           <Switch>
             <Route path="/login" component={LoginForm} />
             <Route path="/register" component={Register} />
-            <Route path="/movies/:new" component={AddMovie} />
-            <Route path="/movies/:id" component={MovieForm} />
+            <Route path="/movies/:id" component={AddMovie} />
             <Route path="/movies" component={Movies} />
             <Route path="/customers" component={Customers} />
             <Route path="/rentals" component={Rentals} />
             <Route path="/not-found" component={NotFound} />
-
             <Redirect from="/" exact to="/movies" />
             <Redirect to="/not-found" />
           </Switch>
