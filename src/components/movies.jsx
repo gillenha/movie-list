@@ -84,7 +84,7 @@ class Movies extends Component {
               onItemSelect={this.handleGenreSelect}
               selectedItem={this.state.selectedGenre}
             />
-            <Link to="/movies/new">
+            <Link to={`/movies/new`}>
               <button className="btn btn-primary m-2">Add Movie</button>
             </Link>
           </div>
